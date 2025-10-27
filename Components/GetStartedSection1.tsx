@@ -4,11 +4,11 @@ import { RiScrollToBottomFill } from 'react-icons/ri'
 
 const GetStartedSection1 = () => {
     return (
-        <div className='bg-[url(/bgimage.jpg)] bg-cover h-screen w-screen text-black'>
+        <div className='bg-[url(/bgimage.jpg)] bg-cover bg-repeat-none h-screen w-screen text-black'>
             {/* <div className='focus:inset-0 focus:bg-black focus:opacity-30 '></div> */}
             {/* <div
           className="absolute inset-0 bg-cover bg-center z-0"></div> */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div className="absolute w-screen h-screen inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
             <Navbar />
             <div className='relative top-[25vh] flex justify-center items-center flex-col'>
                 <div className='text-6xl font-bold text-white '>Choose whats best for your Farm with</div>
