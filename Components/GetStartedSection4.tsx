@@ -1,10 +1,13 @@
+import Link from 'next/link'
 import React from 'react'
 
 const GetStartedSection4 = () => {
   return (
     <div className='h-screen w-screen bg-gradient-to-t from-[#80e656] to-gray-700 flex flex-col justify-center items-center'>
+        <Link href={"/login"} className='rounded-md backdrop-blur-2xl shadow-black shadow-2xl bg-black/40 p-2'>Try it out First</Link>
+
         <div className="bg-white/10 mt-5 p-6 flex flex-col w-[40vw] backdrop-blur-xl shadow-lg shadow-black/40 rounded-2xl border border-white/10">
-                <h2 className="text-3xl font-semibold text-white mb-5 text-center">Contact Us</h2>
+                <h2 className="text-3xl font-semibold text-white mb-5 text-center">Contact Us for Soil-kit Tool</h2>
 
                 <input
                     type="text"

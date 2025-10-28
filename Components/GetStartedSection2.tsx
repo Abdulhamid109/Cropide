@@ -6,7 +6,7 @@ import React from 'react'
 
 const GetStartedSection2 = () => {
   return (
-    <div className='h-screen w-screen bg-gradient-to-t from-[#80e656] to-gray-700 flex justify-center items-center gap-10'>
+    <div id='Aboutus' className='h-screen w-screen bg-gradient-to-t from-[#80e656] to-gray-700 flex justify-center items-center gap-10'>
         <div className='w-[50vw] h-[50vh] flex justify-center items-center'>
           <DotLottieReact
         src='/Animation - 1706084188549.lottie'

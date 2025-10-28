@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import { RiScrollToBottomFill } from 'react-icons/ri'
+import Link from 'next/link'
 
 const GetStartedSection1 = () => {
     return (
@@ -21,8 +22,8 @@ const GetStartedSection1 = () => {
                 </div>
                 <div className='h-[10vh]'></div>
                 <div className='flex justify-center items-center gap-3'>
-                    <button className='p-2 bg-white/40 hover:bg-white/50 hover:scale-105 hover:transition-all hover:duration-200 backdrop-blur-2xl w-[10vw] shadow-2xl rounded-md font-thin'>About Us</button>
-                    <button className='p-2 bg-white/40 hover:bg-white/50 hover:scale-105 hover:transition-all hover:duration-200 backdrop-blur-2xl w-[10vw] shadow-2xl rounded-md font-thin'>Get Started</button>
+                    <Link href={"#Aboutus"} className='p-2 bg-white/40 hover:bg-white/50 hover:scale-105 hover:transition-all text-center hover:duration-200 backdrop-blur-2xl w-[10vw] shadow-2xl rounded-md font-thin'>About Us</Link>
+                    <Link href={"/login"} className='p-2 bg-white/40 hover:bg-white/50 hover:scale-105 hover:transition-all text-center hover:duration-200 backdrop-blur-2xl w-[10vw] shadow-2xl rounded-md font-thin'>Get Started</Link>
                 </div>
                 <div className='h-[10vh]'></div>
                 <RiScrollToBottomFill color='white' size={30} className='p-1 animate-bounce' />
