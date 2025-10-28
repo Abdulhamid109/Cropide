@@ -13,15 +13,15 @@ const page = () => {
             <div className='text-6xl m-2 text-center bg-gradient-to-t from-green-400 font-bold to-white bg-clip-text text-transparent'>Cropide</div>
             <div className='p-2 text-2xl mt-5 mb-4'>Welcome Back !!</div>
            <form className=' flex flex-col justify-center items-center gap-2 p-2 w-[30vw]'>
-            <input type="text" placeholder='Enter your Email' className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg rounded-md p-2 w-[20vw]'/>
-            <input type="text" placeholder='Enter your Password' className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg rounded-md p-2 w-[20vw]'/>
-            <input type="submit" className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg bg-black/40 hover:bg-black/50 rounded-md p-2 w-[20vw]'/>
+            <input type="email" required placeholder='Enter your Email' className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg rounded-md p-2 w-[25vw]'/>
+            <input type="password" required placeholder='Enter your Password' className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg rounded-md p-2 w-[25vw]'/>
+            <input type="submit" className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg bg-black/40 hover:bg-black/50 rounded-md p-2 w-[25vw]'/>
             </form> 
             <div className='p-2'>
                 or
             </div>
             <div className='flex gap-1'>
-                Don&apos;t have an account? <Link href={""} className='text-blue-400 flex justify-center items-center'>Signup <LuArrowBigRight/></Link>
+                Don&apos;t have an account? <Link href={"/signup"} className='text-blue-400 flex justify-center items-center'>Signup <LuArrowBigRight/></Link>
             </div>
         </div>
 
