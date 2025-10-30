@@ -3,21 +3,13 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import User from "@/Models/userModal";
 
-connect();
+
 
 export async function POST(request:NextRequest){
     try {
+        await connect();
         const {name,email,password} = await request.json();
-        if(!name || !email || !password){
-            console.log("Kindly enter all the fields");
-            return NextResponse.json(
-                {error:"Some fields are empty"},
-                {status:401}
-            )
-        }
-
-        
-
+      
         const user = await User.findOne({email});
         if(user){
             console.log("User already exits");
@@ -27,8 +19,8 @@ export async function POST(request:NextRequest){
             )
         }
 
-        const salt = await bcrypt.genSalt(20);
-        const hashedPassword = await bcrypt.compare(password,salt);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password,salt);
 
         const newUser = new User({
             name,
