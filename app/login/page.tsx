@@ -1,8 +1,10 @@
 "use client"
-import axios from 'axios'
-import { ArrowBigRightDash } from 'lucide-react'
+import axios, { AxiosError, AxiosResponse } from 'axios'
+// import { ArrowBigRightDash } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import { LuArrowBigRight } from 'react-icons/lu'
 
 
@@ -10,24 +12,36 @@ interface data {
   email: string,
   password: string
 }
-const page = () => {
+const Page = () => {
   const [data, setData] = useState<data | null>({
     email: "",
     password: ""
   });
 
   const [loading,setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
 
-  const handleSubmit = async()=>{
-    loading(false);
+  const handleSubmit = async(e:React.FormEvent)=>{
+    e.preventDefault();
+    setLoading(true);
+
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/login",{data});
-      if(response.status){
-
+      const response = await axios.post("http://localhost:3000/api/auth/login",data);
+      console.log("data"+data);
+      if(response.status===200){
+        console.log("Successfully logged in..");
+        toast.success(response.data.message);
+        router.push('/home')
       }
     } catch (error) {
-      
+      console.log("Failed to perform the action"+error);
+      if(error instanceof AxiosError){
+        toast.error(error.response?.data.error)
+      }
+    //   toast.error("something went wrong... try again later");
+    }finally{
+        setLoading(false)
     }
   }
 
@@ -47,6 +61,12 @@ const page = () => {
             placeholder='Enter your Email'
             value={data!.email}
             onChange={(e) => setData({ ...data!, email: e.target.value })}
+            // onInvalid={(e) => {
+            //   e.currentTarget.setCustomValidity("Please enter the valid email")
+            // }}
+            // onInput={(e) => {
+            //   e.currentTarget.setCustomValidity("ok");
+            // }}
             className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg rounded-md p-2 w-[25vw]' />
           <input
             type="password"
@@ -55,16 +75,13 @@ const page = () => {
             onChange={(e) => setData({ ...data!, password: e.target.value })}
             placeholder='Enter your Password'
             className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg rounded-md p-2 w-[25vw]'
-            onInvalid={(e) => {
-              e.currentTarget.setCustomValidity("Please enter the valid email")
-            }}
-            onInput={(e) => {
-              e.currentTarget.setCustomValidity("");
-            }}
+            
           />
-          <input
+          <button
           type="submit" 
-          className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg bg-black/40 hover:bg-black/50 rounded-md p-2 w-[25vw]' />
+          className='focus:outline focus:no-underline backdrop-blur-lg shadow-lg bg-black/40 hover:bg-black/50 rounded-md p-2 w-[25vw]' >
+            {loading?"loading...":"Login"}
+          </button>
         </form>
         <div className='p-2'>
           or
@@ -78,4 +95,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
