@@ -1,12 +1,17 @@
-import Link from 'next/link'
+import Navbar2 from '@/Components/Navbar2'
 import React from 'react'
 
-const GetStartedSection4 = () => {
+const page = () => {
   return (
-    <div id='Contact' className='h-screen w-screen bg-gradient-to-t from-[#80e656] to-gray-700 flex flex-col justify-center items-center'>
-        <Link href={"/login"} className='rounded-md backdrop-blur-2xl shadow-black shadow-2xl bg-black/40 p-2'>Try it out First</Link>
-
-        <div className="bg-white/10 mt-5 p-6 flex flex-col w-[40vw] backdrop-blur-xl shadow-lg shadow-black/40 rounded-2xl border border-white/10">
+    <div className='relative h-screen w-screen overflow-auto'>
+         <div
+                className='fixed inset-0 bg-[url(/bgimage.jpg)] bg-cover bg-no-repeat bg-center -z-10'
+            />
+            <div className='fixed inset-0 backdrop-blur-lg bg-black/40 -z-10' />
+            <Navbar2/>
+            {/* Scrollable content */}
+            <div className='relative  h-screen w-screen -z-1 flex justify-center items-center'>
+                <div className="bg-white/10 mt-5 p-6 flex flex-col w-[40vw] backdrop-blur-xl shadow-lg shadow-black/40 rounded-2xl border border-white/10">
                 <h2 className="text-3xl font-semibold text-white mb-5 text-center">Contact Us for Soil-kit Tool</h2>
 
                 <input
@@ -36,8 +41,9 @@ const GetStartedSection4 = () => {
                     Submit
                 </button>
             </div>
+            </div>
     </div>
   )
 }
 
-export default GetStartedSection4
+export default page
