@@ -1,6 +1,6 @@
 "use client"
 import Navbar2 from '@/Components/Navbar2'
-import Link from 'next/link'
+// import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { RiScrollToBottomFill } from 'react-icons/ri'
 import {
@@ -10,8 +10,9 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/Components/ui/dialog"
-import axios, { AxiosError } from 'axios'
+} from "@/Components/ui/dialog";
+import axios, { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
 
 
 
@@ -24,6 +25,8 @@ const Page = () => {
     const [long, setlong] = useState<number | null>(null);
     const [location, setLocation] = useState<string | null>('');
     const [state, setState] = useState<string | null>("");
+    const [name,setName]=useState<string|null>('');
+    const
 
     const LocationAddressFetching = async () => {
         try {
@@ -54,6 +57,22 @@ const Page = () => {
             console.log("Something went wrong..failed to predict" + error);
             if (error instanceof AxiosError) {
                 setState(error.response?.data.error);
+            }
+        }
+    }
+
+
+    const MeName=async()=>{
+        try {
+            const response=await axios.get("/api/pages/me");
+            if(response.status===200){
+                console.log("Name"+response.data.user.name);
+                setName(response.data.user.name);
+            }
+        } catch (error) {
+            console.log("Something went wrong..failed to predict" + error);
+            if (error instanceof AxiosError) {
+                toast.error(error.response?.data.error);
             }
         }
     }
