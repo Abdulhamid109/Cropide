@@ -15,19 +15,19 @@ const Navbar2 = () => {
 
     const router = useRouter();
 
-    const onLogout = async()=>{
+    const onLogout = async () => {
         try {
             const response = await axios.get("/api/auth/logout");
-            if(response.status===200){
+            if (response.status === 200) {
                 console.log("Successfully logged out!!");
-                setTimeout(()=>{
+                setTimeout(() => {
                     toast.success(response.data.message);
-                },500)
+                }, 500)
                 router.push('/');
             }
         } catch (error) {
-            console.log("Failed to logout..."+error);
-            if(error instanceof AxiosError){
+            console.log("Failed to logout..." + error);
+            if (error instanceof AxiosError) {
                 console.log("Something went wrong");
                 toast.error(error.response?.data.error);
             }
@@ -42,7 +42,7 @@ const Navbar2 = () => {
                     <Link href={"/aboutus"} className='hover:underline hover:scale-105 hover:transition-all hover:duration-200'>About us</Link>
                     <Link href={"/Contact"} className='hover:underline hover:scale-105 hover:transition-all hover:duration-200'>Contact</Link>
                     <Link href={"https://www.youtube.com/watch?v=qpVgidFJhVM"} className='hover:underline hover:scale-105 hover:transition-all hover:duration-200'>Soil-Kit demonstration</Link>
-                    <li className='hover:underline hover:scale-105 hover:transition-all hover:duration-200'>Profile</li>
+                    <Link href={"/Profile"} className='hover:underline hover:scale-105 hover:transition-all hover:duration-200'>Profile</Link>
                     <li className='hover:underline hover:text-red-600 hover:scale-105 hover:transition-all hover:duration-200 '>
                         <Dialog>
                             <DialogTrigger>Logout</DialogTrigger>
@@ -53,9 +53,9 @@ const Navbar2 = () => {
                                         <button className='text-xs rounded-md p-2 hover:bg-gray-900  bg-gray-800'>
                                             <DialogClose>Cancel</DialogClose>
                                         </button>
-                                    <button onClick={onLogout} className='text-xs rounded-md p-2 hover:bg-red-700 bg-red-400'>
-                                        Logout
-                                    </button>
+                                        <button onClick={onLogout} className='text-xs rounded-md p-2 hover:bg-red-700 bg-red-400'>
+                                            Logout
+                                        </button>
                                     </div>
                                 </DialogFooter>
                             </DialogContent>
